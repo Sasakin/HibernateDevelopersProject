@@ -13,7 +13,7 @@
 
         <!-- Assume test is the database name -->
         <property name="hibernate.connection.url">
-            jdbc:mysql://localhost:3306/developer_manager
+           jdbc:mysql://localhost:3306/developer_manager
         </property>
         <property name="hibernate.connection.username">
             root
@@ -22,14 +22,25 @@
             sas20132013
         </property>
 
-        <!-- List of XML mapping files -->
-        <mapping resource="Client.hbm.xml"/>
-        <mapping resource="Company.hbm.xml"/>
-        <mapping resource="Developer.hbm.xml"/>
-        <mapping resource="Project.hbm.xml"/>
-        <mapping resource="ProjectDeveloper.hbm.xml"/>
-        <mapping resource="Specialty.hbm.xml"/>
-        <mapping resource="SpecialtyDeveloper.hbm.xml"/>
+        <!-- Включить автоматическое управление контекстом сессии -->
+        <property name="current_session_context_class">thread</property>
 
-    </session-factory>
-</hibernate-configuration>
+        <!-- Отключение кеша второго уровня  -->
+        <property name="cache.provider_class">
+            org.hibernate.cache.internal.NoCacheProvider
+        </property>
+
+        <!-- Вывод в консоль SQL-запросов -->
+        <property name="show_sql">true</property>
+
+        <!-- List of XML mapping files
+        <mapping resource="Client.hbm.xml"/>
+        <mapping resource="Company.hbm.xml"/> -->
+        <mapping resource="Developer.hbm.xml"/>
+        <!-- <mapping resource="Project.hbm.xml"/>
+         <mapping resource="ProjectDeveloper.hbm.xml"/>
+         <mapping resource="Specialty.hbm.xml"/>
+         <mapping resource="SpecialtyDeveloper.hbm.xml"/>-->
+
+     </session-factory>
+ </hibernate-configuration>
